@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-useHead({
+useSeoMeta({
   title: "Eventos",
 });
 </script>

@@ -1,14 +1,10 @@
 <template>
   <div>
-    <ContentDoc :path="`eventos/${$route.params.slug}`">
-      <template #not-found>
+    <div>
+      <div v-if="doc === null">
         <h1>Evento não encontrado.</h1>
-      </template>
-      <template v-slot="{ doc }">
-        <Head>
-          <Title>{{ doc.title }}</Title>
-          <Meta name="description" :content="doc.summary" />
-        </Head>
+      </div>
+      <div v-if="doc">
         <section class="bg-sky-900 text-white">
           <div class="container mx-auto px-10 py-20">
             <h1 class="text-3xl lg:text-5xl max-w-xl">
@@ -51,14 +47,14 @@
               <nuxt-link
                 v-for="link in nav"
                 :to="link.to"
-                class="px-4 py-2 text-gray-500 hover:text-gray-900"
+                class="page-link px-4 py-2 text-gray-400 hover:text-gray-900"
               >
                 {{ link.text }}
               </nuxt-link>
             </nav>
           </div>
         </section>
-        <NuxtPage />
+        <NuxtPage :doc="doc" />
         <section>
           <div class="pb-20 pt-10 mt-10 border-t container mx-auto">
             <div class="flex justify-between">
@@ -74,8 +70,8 @@
             </div>
           </div>
         </section>
-      </template>
-    </ContentDoc>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -111,6 +107,19 @@ const nav = [
 ];
 
 const domain = import.meta.client ? location.hostname : "'-'";
+
+const { data: doc } = await useAsyncData("evento", () =>
+  queryContent("/eventos/" + route.params.slug).findOne()
+);
+
+useSeoMeta({
+  title: doc.value?.title,
+  description: doc.value?.summary,
+});
 </script>
 
-<style></style>
+<style lang="postcss" scoped>
+.page-link.router-link-exact-active {
+  @apply text-gray-900;
+}
+</style>
