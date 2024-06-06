@@ -1,71 +1,77 @@
 <template>
   <div>
-    <section class="bg-sky-900 text-white">
-      <div class="container mx-auto px-10 py-20">
-        <h1 class="text-3xl lg:text-5xl max-w-xl">
-          Introdução à rodada de networking
-        </h1>
-        <p class="mt-8 max-w-xl">
-          Esta atividade que tem como objetivo promover a interação entre os
-          desenvolvedores através de uma dinâmica de conversas rápidas.
-        </p>
-        <ul class="mt-10 space-y-3">
-          <li class="flex items-center space-x-2">
-            <Icon name="solar:calendar-add-linear" class="text-2xl" />
-            <div>11 de Junho de 2024</div>
-          </li>
-          <li class="flex items-center space-x-2">
-            <Icon name="solar:clock-circle-linear" class="text-2xl" />
-            <div>19:00 às 21:00</div>
-          </li>
-          <li class="flex items-center space-x-2">
-            <Icon name="solar:play-circle-linear" class="text-2xl" />
-            <div>Hibrido (presencial com livestream)</div>
-          </li>
-          <li class="flex items-center space-x-2">
-            <Icon name="solar:money-bag-linear" class="text-2xl" />
-            <div>Gratuíto</div>
-          </li>
-        </ul>
-        <nuxt-link
-          :to="{
-            name: 'slug-index-participar',
-          }"
-          class="inline-block mt-8 px-10 py-4 rounded-lg bg-black/20 hover:bg-black/40 hover:text-gray-300"
-        >
-          Participar
-        </nuxt-link>
-      </div>
-    </section>
-    <section class="shadow py-5">
-      <div class="container mx-auto flex justify-center space-x-4">
-        <nav class="text-gray-500 font-semibold">
-          <nuxt-link
-            v-for="link in nav"
-            :to="link.to"
-            class="px-4 py-2 text-gray-500 hover:text-gray-900"
-          >
-            {{ link.text }}
-          </nuxt-link>
-        </nav>
-      </div>
-    </section>
-    <NuxtPage />
-    <section>
-      <div class="pb-20 pt-10 mt-10 border-t container mx-auto">
-        <div class="flex justify-between">
-          <div class="text-gray-600">
-            <div>Introdução à rodada de networking</div>
-            <div>11 de Junho de 2024</div>
+    <ContentDoc :path="`eventos/${$route.params.slug}`">
+      <template #not-found>
+        <h1>Document not found</h1>
+      </template>
+      <template v-slot="{ doc }">
+        <section class="bg-sky-900 text-white">
+          <div class="container mx-auto px-10 py-20">
+            <h1 class="text-3xl lg:text-5xl max-w-xl">
+              {{ doc.title }}
+            </h1>
+            <p class="mt-8 max-w-xl">
+              {{ doc.summary }}
+            </p>
+            <ul class="mt-10 space-y-3">
+              <li class="flex items-center space-x-2">
+                <Icon name="solar:calendar-add-linear" class="text-2xl" />
+                <div>{{ doc.when }}</div>
+              </li>
+              <li class="flex items-center space-x-2">
+                <Icon name="solar:clock-circle-linear" class="text-2xl" />
+                <div>{{ doc.hour }}</div>
+              </li>
+              <li class="flex items-center space-x-2">
+                <Icon name="solar:play-circle-linear" class="text-2xl" />
+                <div>{{ doc.where }}</div>
+              </li>
+              <li class="flex items-center space-x-2">
+                <Icon name="solar:money-bag-linear" class="text-2xl" />
+                <div>{{ doc.price }}</div>
+              </li>
+            </ul>
+            <nuxt-link
+              :to="{
+                name: 'slug-index-participar',
+              }"
+              class="inline-block mt-8 px-10 py-4 rounded-lg bg-black/20 hover:bg-black/40 hover:text-gray-300"
+            >
+              Participar
+            </nuxt-link>
           </div>
-          <nuxt-link to="/" class="font-mono">eventos.quila.dev</nuxt-link>
-          <div class="text-gray-600 text-right">
-            <div>Híbrido (presencial com livestream)</div>
-            <div>Gratuíto</div>
+        </section>
+        <section class="shadow py-5">
+          <div class="container mx-auto flex justify-center space-x-4">
+            <nav class="text-gray-500 font-semibold">
+              <nuxt-link
+                v-for="link in nav"
+                :to="link.to"
+                class="px-4 py-2 text-gray-500 hover:text-gray-900"
+              >
+                {{ link.text }}
+              </nuxt-link>
+            </nav>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+        <NuxtPage />
+        <section>
+          <div class="pb-20 pt-10 mt-10 border-t container mx-auto">
+            <div class="flex justify-between">
+              <div class="text-gray-600">
+                <div>{{ doc.title }}</div>
+                <div>{{ doc.when }}</div>
+              </div>
+              <nuxt-link to="/" class="font-mono">{{ domain }}</nuxt-link>
+              <div class="text-gray-600 text-right">
+                <div>{{ doc.where }}</div>
+                <div>{{ doc.price }}</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </template>
+    </ContentDoc>
   </div>
 </template>
 
@@ -99,6 +105,8 @@ const nav = [
     text: "Certificado",
   },
 ];
+
+const domain = import.meta.client ? location.hostname : "'-'";
 </script>
 
 <style></style>
