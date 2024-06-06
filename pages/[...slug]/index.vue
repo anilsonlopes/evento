@@ -2,9 +2,13 @@
   <div>
     <ContentDoc :path="`eventos/${$route.params.slug}`">
       <template #not-found>
-        <h1>Document not found</h1>
+        <h1>Evento não encontrado.</h1>
       </template>
       <template v-slot="{ doc }">
+        <Head>
+          <Title>{{ doc.title }}</Title>
+          <Meta name="description" :content="doc.summary" />
+        </Head>
         <section class="bg-sky-900 text-white">
           <div class="container mx-auto px-10 py-20">
             <h1 class="text-3xl lg:text-5xl max-w-xl">
