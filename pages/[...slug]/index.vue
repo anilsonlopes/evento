@@ -62,7 +62,11 @@
                 <div>{{ doc.title }}</div>
                 <div>{{ doc.when }}</div>
               </div>
-              <nuxt-link to="/" class="font-mono">{{ domain }}</nuxt-link>
+              <nuxt-link to="/" class="font-mono">
+                <client-only fallback="Carregando informações...">
+                  {{ domain }}
+                </client-only>
+              </nuxt-link>
               <div class="text-gray-600 text-right">
                 <div>{{ doc.where }}</div>
                 <div>{{ doc.price }}</div>
