@@ -15,7 +15,9 @@
               <div
                 class="p-5 rounded-lg flex items-center justify-center flex-col text-white bg-sky-800 text-center"
               >
-                <div class="whitespace-nowrap">{{ event.when }}</div>
+                <div class="whitespace-nowrap uppercase">
+                  {{ $dayjs(event.when).format("D MMM YY") }}
+                </div>
                 <div class="whitespace-nowrap lg:text-2xl font-bold font-serif">
                   {{ event.hour }}
                 </div>

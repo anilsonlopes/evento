@@ -16,7 +16,9 @@
             <ul class="mt-10 space-y-3">
               <li class="flex items-center space-x-2">
                 <Icon name="solar:calendar-add-linear" class="text-2xl" />
-                <div>{{ doc.when }}</div>
+                <div>
+                  {{ $dayjs(doc.when).format("L") }}
+                </div>
               </li>
               <li class="flex items-center space-x-2">
                 <Icon name="solar:clock-circle-linear" class="text-2xl" />

@@ -6,5 +6,6 @@ export default defineNuxtConfig({
   dayjs: {
     locales: ["pt-br"],
     defaultLocale: "pt-br",
+    plugins: ["localizedFormat"]
   },
 });
