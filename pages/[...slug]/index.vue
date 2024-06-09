@@ -17,12 +17,8 @@
               <li class="flex items-center space-x-2">
                 <Icon name="solar:calendar-add-linear" class="text-2xl" />
                 <div>
-                  {{ $dayjs(doc.when).format("L") }}
+                  {{ $dayjs(doc.when).format("D, MMM YYYY - LT[h]") }}
                 </div>
-              </li>
-              <li class="flex items-center space-x-2">
-                <Icon name="solar:clock-circle-linear" class="text-2xl" />
-                <div>{{ doc.hour }}</div>
               </li>
               <li class="flex items-center space-x-2">
                 <Icon name="solar:play-circle-linear" class="text-2xl" />
@@ -36,6 +32,7 @@
             <nuxt-link
               :to="{
                 name: 'slug-index-participar',
+                hash: '#nav',
               }"
               class="inline-block mt-8 px-10 py-4 rounded-lg bg-black/20 hover:bg-black/40 hover:text-gray-300"
             >
@@ -43,7 +40,7 @@
             </nuxt-link>
           </div>
         </section>
-        <section id="nav" class="shadow py-5">
+        <section id="nav" class="shadow py-5 bg-white sticky top-0">
           <div class="container mx-auto flex justify-center space-x-4">
             <nav class="text-gray-500 font-semibold">
               <nuxt-link

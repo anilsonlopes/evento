@@ -2,7 +2,7 @@
   <div>
     <slot />
     <footer>
-      <div class="pb-20 pt-10 mt-10 border-t container mx-auto">
+      <div class="pb-20 pt-10 mt-10 px-10 border-t container mx-auto">
         <div class="flex justify-between">
           <nuxt-link to="/" class="font-mono">
             <client-only fallback="Carregando informações...">

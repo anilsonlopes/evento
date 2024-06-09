@@ -2,7 +2,7 @@
   <div class="min-h-screen flex justify-center bg-sky-900">
     <main class="max-w-5xl w-full mx-auto px-10 pb-20">
       <h1 class="text-white text-6xl mb-10 mt-10 lg:mt-52">Eventos</h1>
-      <ContentList v-slot="{ list }">
+      <ContentList v-slot="{ list }" path="/eventos">
         <div class="space-y-10">
           <div v-for="event in list">
             <nuxt-link
@@ -19,7 +19,7 @@
                   {{ $dayjs(event.when).format("D MMM YY") }}
                 </div>
                 <div class="whitespace-nowrap lg:text-2xl font-bold font-serif">
-                  {{ event.hour }}
+                  {{ $dayjs(event.when).format("LT") }}
                 </div>
               </div>
               <div class="text-white">
