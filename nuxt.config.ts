@@ -6,7 +6,8 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@nuxt/content",
     "dayjs-nuxt",
-    "@nuxtjs/supabase"
+    "@nuxtjs/supabase",
+    "shadcn-nuxt"
   ],
 
   dayjs: {
