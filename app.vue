@@ -6,4 +6,8 @@
   </div>
 </template>
 
-<style></style>
+<style>
+html, body {
+  scroll-behavior: smooth;
+}
+</style>

@@ -43,12 +43,12 @@
             </nuxt-link>
           </div>
         </section>
-        <section class="shadow py-5">
+        <section id="nav" class="shadow py-5">
           <div class="container mx-auto flex justify-center space-x-4">
             <nav class="text-gray-500 font-semibold">
               <nuxt-link
                 v-for="link in nav"
-                :to="link.to"
+                :to="{ ...link.to, hash: '#nav' }"
                 class="page-link px-4 py-2 text-gray-400 hover:text-gray-900"
               >
                 {{ link.text }}
@@ -56,26 +56,9 @@
             </nav>
           </div>
         </section>
-        <NuxtPage :doc="doc" />
-        <section>
-          <div class="pb-20 pt-10 mt-10 border-t container mx-auto">
-            <div class="flex justify-between">
-              <div class="text-gray-600">
-                <div>{{ doc.title }}</div>
-                <div>{{ doc.when }}</div>
-              </div>
-              <nuxt-link to="/" class="font-mono">
-                <client-only fallback="Carregando informações...">
-                  {{ domain }}
-                </client-only>
-              </nuxt-link>
-              <div class="text-gray-600 text-right">
-                <div>{{ doc.where }}</div>
-                <div>{{ doc.price }}</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <div class="min-h-screen">
+          <NuxtPage :doc="doc" />
+        </div>
       </div>
     </div>
   </div>
@@ -111,8 +94,6 @@ const nav = [
     text: "Certificado",
   },
 ];
-
-const domain = import.meta.client ? location.hostname : "'-'";
 
 const { data: doc } = await useAsyncData("evento", () =>
   queryContent("/eventos/" + route.params.slug).findOne()
