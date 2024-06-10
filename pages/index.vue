@@ -1,7 +1,7 @@
 <template>
   <div class="bg-sky-900">
     <main class="container mx-auto px-10 py-20">
-      <h1 class="text-white text-6xl mb-10 lg:mt-52">Eventos</h1>
+      <h1 class="text-white text-6xl mb-10 lg:mt-52">Todos eventos</h1>
       <ContentList v-slot="{ list }" path="/eventos">
         <div class="space-y-10">
           <div v-for="event in list">
@@ -38,10 +38,6 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-useSeoMeta({
-  title: "Eventos",
-});
-</script>
+<script lang="ts" setup></script>
 
 <style></style>

@@ -7,18 +7,26 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "dayjs-nuxt",
     "@nuxtjs/supabase",
-    "shadcn-nuxt"
+    "shadcn-nuxt",
+    "@nuxtjs/seo",
   ],
 
   dayjs: {
     locales: ["pt-br"],
     defaultLocale: "pt-br",
-    plugins: ["localizedFormat"]
+    plugins: ["localizedFormat"],
   },
 
   supabase: {
     key: process.env.SUPABASE_KEY,
     url: process.env.SUPABASE_URL,
     redirect: false,
-  }
+  },
+
+  site: {
+    url: "https://evento.quila.studio",
+    name: "stüdio://evento",
+    description: "events and stuff by stüdio",
+    defaultLocale: "pt-BR",
+  },
 });
