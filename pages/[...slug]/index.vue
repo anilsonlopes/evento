@@ -54,7 +54,7 @@
           </div>
         </section>
         <div class="min-h-screen">
-          <NuxtPage :doc="doc" :supa-doc="supaDoc" />
+          <NuxtPage :doc="doc" />
         </div>
       </div>
     </div>
@@ -96,15 +96,6 @@ const nav = [
 const { data: doc } = await useAsyncData("evento", () =>
   queryContent("/eventos/" + route.params.slug).findOne()
 );
-
-const supaDoc = await useAsyncData("supa_doc", async () => {
-  const data = await supabase
-    .from("event")
-    .select("*")
-    .eq("slug", route.params.slug)
-    .single();
-  return data;
-});
 
 useSeoMeta({
   title: doc.value?.title,
