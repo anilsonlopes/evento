@@ -3,7 +3,7 @@
     <div class="text-center">
       <h2 class="text-3xl font-semibold">Inscrição confirmada!</h2>
       <p class="mt-2 text-gray-700 text-xl">
-        Obrigado por se inscrever, sua participação foi confirmada com sucesso.
+        Você já está inscrito neste evento.
       </p>
     </div>
   </div>

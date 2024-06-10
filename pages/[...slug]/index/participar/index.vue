@@ -87,26 +87,27 @@ const loadingForm = ref(false);
 async function submitForm() {
   loadingForm.value = true;
 
-  const { error } = await supabase.from("registration").insert({
+  const { error, status } = await supabase.from("registration").insert({
     name: name.value,
     email: email.value,
     event_uid: props.doc.uid,
   });
 
   if (error) {
-    console.error(error.message);
+    if (status === 409) {
+      router.push({
+        name: "slug-index-participar-duplicado",
+        hash: "#nav",
+      });
+    }
     loadingForm.value = false;
     return;
   }
 
-  router
-    .push({
-      name: "slug-index-participar-confirmado",
-      hash: "#nav",
-    })
-    .then(() => {
-      loadingForm.value = false;
-    });
+  router.push({
+    name: "slug-index-participar-confirmado",
+    hash: "#nav",
+  });
 }
 </script>
 
