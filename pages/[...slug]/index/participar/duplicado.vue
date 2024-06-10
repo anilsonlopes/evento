@@ -9,6 +9,10 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+useHead({
+  title: "Inscrição confirmada!",
+});
+</script>
 
 <style></style>

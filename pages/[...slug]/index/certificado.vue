@@ -40,6 +40,10 @@ const features = [
       "Após o término do evento, basta inserir seus dados para gerar e baixar seu certificado. Agradecemos sua participação!",
   },
 ];
+
+useHead({
+  title: "Certificado de participação",
+});
 </script>
 
 <style></style>

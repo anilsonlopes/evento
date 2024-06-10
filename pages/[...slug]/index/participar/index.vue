@@ -84,6 +84,10 @@ const props = defineProps<{
 }>();
 const loadingForm = ref(false);
 
+useHead({
+  title: "Participe do evento",
+});
+
 async function submitForm() {
   loadingForm.value = true;
 
