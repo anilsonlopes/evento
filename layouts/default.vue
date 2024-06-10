@@ -1,13 +1,43 @@
 <template>
   <div>
+    <header class="shadow py-2 bg-white sticky top-0">
+      <div class="container mx-auto flex items-center justify-between">
+        <div class="flex space-x-8 items-center text-sm">
+          <nuxt-link class="flex items-center space-x-4" to="/">
+            <img
+              src="/favicon-16x16.png"
+              width="16px"
+              height="16px"
+              class="mt-px"
+              alt="Logo da aplicação: um quadrado com a letra E dentro"
+            />
+            <AppLogoStudio class="hidden sm:block" />
+          </nuxt-link>
+          <nuxt-link class="header-nav-item" to="/app/termos-de-uso">
+            Termos de uso
+          </nuxt-link>
+          <nuxt-link class="header-nav-item" to="/app/politica-de-privacidade">
+            Política de privacidade
+          </nuxt-link>
+        </div>
+        <div>
+          <div class="size-10 bg-gray-600 rounded-full"></div>
+        </div>
+      </div>
+    </header>
     <slot />
     <footer>
-      <div class="pb-20 pt-10 mt-10 px-10 border-t container mx-auto">
+      <div class="py-10 px-10 border-t container mx-auto">
         <div class="flex justify-between">
-          <nuxt-link to="/" class="font-mono">
-            <client-only fallback="Carregando informações...">
-              {{ domain }}
-            </client-only>
+          <nuxt-link class="flex items-center space-x-4" to="/">
+            <img
+              src="/favicon-16x16.png"
+              width="16px"
+              height="16px"
+              class="mt-px"
+              alt="Logo da aplicação: um quadrado com a letra E dentro"
+            />
+            <AppLogoStudio class="hidden sm:block" />
           </nuxt-link>
           <div class="text-gray-600 text-right">
             &copy; {{ $dayjs().format("YYYY") }}
@@ -31,5 +61,11 @@ const domain = import.meta.client ? location.hostname : "'-'";
 }
 .form-input-text:focus {
   @apply border-sky-600;
+}
+.header-nav-item {
+  @apply text-gray-400 border-b-2 border-dotted transition-colors duration-150 border-transparent hover:text-gray-700;
+}
+.header-nav-item.router-link-exact-active {
+  @apply text-black border-gray-400;
 }
 </style>
