@@ -108,7 +108,7 @@ const supaDoc = await useAsyncData("supa_doc", async () => {
 
 useSeoMeta({
   title: doc.value?.title,
-  description: doc.value?.summary,
+  description: doc.value?.category,
 });
 </script>
 

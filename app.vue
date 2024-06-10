@@ -6,8 +6,13 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+defineOgImage();
+</script>
+
 <style>
-html, body {
+html,
+body {
   scroll-behavior: smooth;
 }
 </style>

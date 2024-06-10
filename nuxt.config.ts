@@ -24,9 +24,13 @@ export default defineNuxtConfig({
   },
 
   site: {
-    url: "https://evento.quila.studio",
+    url:
+      process.env.NODE_ENV === "development"
+        ? ""
+        : "https://evento.quila.studio",
     name: "stüdio://evento",
-    description: "events and stuff by stüdio",
+    description:
+      "Diretório de eventos, palestras e workshops, online e presenciais.",
     defaultLocale: "pt-BR",
   },
 });
