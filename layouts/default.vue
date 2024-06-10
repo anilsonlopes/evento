@@ -19,6 +19,9 @@
           <nuxt-link class="header-nav-item" to="/app/politica-de-privacidade">
             Política de privacidade
           </nuxt-link>
+          <nuxt-link class="header-nav-item" to="/app/criar-conta">
+            Criar conta
+          </nuxt-link>
         </div>
         <div>
           <div class="size-10 bg-gray-600 rounded-full"></div>
