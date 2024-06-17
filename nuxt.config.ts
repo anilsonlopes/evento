@@ -33,4 +33,10 @@ export default defineNuxtConfig({
       "Diretório de eventos, palestras e workshops, online e presenciais.",
     defaultLocale: "pt-BR",
   },
+  runtimeConfig: {
+    public: {
+      zohoClientId: process.env.ZOHO_CLIENT_ID,
+    },
+    zohoClientSecret: process.env.ZOHO_CLIENT_SECRET,
+  },
 });
