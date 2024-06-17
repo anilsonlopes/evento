@@ -16,7 +16,7 @@
     </div>
     <div class="lg:col-span-2">
       <form class="grid md:grid-cols-2 gap-5" @submit.prevent="submitForm">
-        <div>
+        <div class="col-span-2 md:col-span-1">
           <label class="form-label" for="name">Nome</label>
           <input
             id="name"
@@ -25,9 +25,10 @@
             autocomplete="name"
             placeholder="Steve Jobs"
             class="form-input-text"
+            required
           />
         </div>
-        <div>
+        <div class="col-span-2 md:col-span-1">
           <label class="form-label" for="email">E-mail</label>
           <input
             id="email"
@@ -36,10 +37,12 @@
             placeholder="sj@acesseseucondominio.com.br"
             autocomplete="email"
             class="form-input-text"
+            required
           />
         </div>
-        <button
-          class="col-span-2 space-x-3 text-center py-3 rounded bg-gray-50 border text-gray-500 text-lg hover:bg-gray-100 hover:text-gray-900 active:bg-sky-500 active:text-white active:border-sky-500 transition-colors"
+        <Button
+          class="col-span-2 h-12 text-base"
+          variant="outline"
           type="submit"
         >
           <Icon
@@ -47,12 +50,8 @@
             name="fluent:spinner-ios-16-regular"
             class="animate-spin"
           />
-          <Icon
-            v-if="!loadingForm"
-            name="fluent:chevron-double-right-20-regular"
-          />
           <span v-if="!loadingForm">Inscrever-se</span>
-        </button>
+        </Button>
         <div class="mt-4 text-sm text-gray-500 col-span-2">
           Ao clicar em "Inscrever-se", você concorda com os
           <nuxt-link to="/app/termos-de-uso" class="text-sky-800 underline">
@@ -73,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+import { Button } from "~/components/ui/button";
 const supabase = useSupabaseClient();
 const name = ref("");
 const email = ref("");

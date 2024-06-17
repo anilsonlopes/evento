@@ -2,17 +2,17 @@
   <div>
     <header class="shadow py-2 bg-white sticky top-0">
       <div class="container mx-auto flex items-center justify-between">
-        <div class="flex space-x-8 items-center text-sm">
-          <nuxt-link class="flex items-center space-x-4" to="/">
-            <img
-              src="/favicon-16x16.png"
-              width="16px"
-              height="16px"
-              class="mt-px"
-              alt="Logo da aplicação: um quadrado com a letra E dentro"
-            />
-            <AppLogoStudio class="hidden sm:block" />
-          </nuxt-link>
+        <nuxt-link class="flex items-center space-x-4" to="/">
+          <img
+            src="/favicon-16x16.png"
+            width="16px"
+            height="16px"
+            class="mt-px"
+            alt="Logo da aplicação: um quadrado com a letra E dentro"
+          />
+          <AppLogoStudio />
+        </nuxt-link>
+        <div class="hidden md:flex space-x-8 items-center text-sm">
           <nuxt-link class="header-nav-item" to="/app/termos-de-uso">
             Termos de uso
           </nuxt-link>
@@ -51,9 +51,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const domain = import.meta.client ? location.hostname : "'-'";
-</script>
+<script lang="ts" setup></script>
 
 <style lang="postcss">
 .form-label {

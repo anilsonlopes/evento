@@ -41,17 +41,17 @@
           </div>
         </section>
         <section id="nav" class="shadow py-5 bg-white sticky top-0">
-          <div class="container mx-auto flex justify-center space-x-4">
-            <nav class="text-gray-500 font-semibold">
-              <nuxt-link
-                v-for="link in nav"
-                :to="{ ...link.to, hash: '#nav' }"
-                class="page-link px-4 py-2 text-gray-400 hover:text-gray-900"
-              >
-                {{ link.text }}
-              </nuxt-link>
-            </nav>
-          </div>
+          <nav
+            class="container mx-auto flex justify-center space-x-2 md:space-x-4 text-gray-500 font-semibold"
+          >
+            <nuxt-link
+              v-for="link in nav"
+              :to="{ ...link.to, hash: '#nav' }"
+              class="page-link px-2 md:px-4 py-2 text-gray-400 hover:text-gray-900"
+            >
+              {{ link.text }}
+            </nuxt-link>
+          </nav>
         </section>
         <div class="min-h-screen">
           <NuxtPage :doc="doc" />
@@ -63,7 +63,6 @@
 
 <script lang="ts" setup>
 const route = useRoute();
-const supabase = useSupabaseClient();
 
 if (!route.params.slug) {
   throw createError({
