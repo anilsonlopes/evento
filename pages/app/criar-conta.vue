@@ -13,8 +13,10 @@
             <div class="text-center text-sm">Selecione seu provedor</div>
           </CardHeader>
           <CardContent class="space-y-5">
-            <Button variant="outline" class="w-full">
-              Entrar com Zoho Auth
+            <Button as-child variant="outline" class="w-full">
+              <nuxt-link :to="requestZohoAuthUrl">
+                Entrar com Zoho Auth
+              </nuxt-link>
             </Button>
             <Button variant="outline" class="w-full">
               Entrar com GitHub
@@ -31,18 +33,23 @@
 
 <script lang="ts" setup>
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 useHead({
   title: "Criar conta",
+});
+
+const config = useRuntimeConfig();
+
+const requestUrl = useRequestURL();
+
+const requestZohoAuthUrl = computed(() => {
+  const url = new URL("https://accounts.zoho.com/oauth/v2/auth");
+  url.searchParams.set("response_type", "code");
+  url.searchParams.set("client_id", config.public.zohoClientId);
+  url.searchParams.set("redirect_uri", requestUrl.origin + "/auth/callback/zoho");
+  url.searchParams.set("scope", "email,profile,openid");
+  return url.href;
 });
 </script>
 
